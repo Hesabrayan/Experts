@@ -8,4 +8,4 @@ Project : `Infrastructures.EntityFrameworks.RegisterAllEntities`
 Base Class : `AppEntity`
  
 ## 🚀 Point
-بهترین راه حل  امتیاز دارد.
+بهترین راه حل 5 امتیاز دارد.
