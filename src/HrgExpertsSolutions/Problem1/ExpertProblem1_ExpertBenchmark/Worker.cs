@@ -24,7 +24,7 @@ namespace ExpertProblem1_ExpertBenchmark
         {
             var assembly = typeof(IAssemblyMaker).Assembly;
 
-            List<Type> types = assembly.GetTypes()
+            List<Type> types = assembly.GetExportedTypes()
                                            .Where(x => x.IsClass)
                                            .Where(x => !x.IsAbstract)
                                            .Where(x => x.BaseType == typeof(AppEntity))
