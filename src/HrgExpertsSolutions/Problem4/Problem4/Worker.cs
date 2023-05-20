@@ -2,7 +2,7 @@
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 
-namespace ExpertProble3_ExpertBenchmark
+namespace ExpertProble4_ExpertBenchmark
 {
     [MemoryDiagnoser]
     [RankColumn]
@@ -10,29 +10,27 @@ namespace ExpertProble3_ExpertBenchmark
     [SimpleJob(RuntimeMoniker.Net70, baseline: true)]
     public class Worker
     {
-        public static List<object> ValueObjects;
-         
+        public static List<string> dataOfString;
+
         [GlobalSetup]
         public void Setup()
         {
-            ValueObjects = new List<object>();
+            dataOfString = new List<string>();
 
             for (int i = 0; i < 30_000; i++)
             {
-                ValueObjects.Add(new object());
+                dataOfString.Add(DateTime.Now.AddDays(i).ToShortDateString());
             }
         }
-         
+
         [Benchmark(Baseline = true)]
-        public int BaseExample_GenerateHashCode()
+        public string BaseExample_MergeStringItems()
         {
-            return ValueObjects.Select(x => (x is not null) ? x.GetHashCode() : 0)
-                                    .Aggregate((x, y) => x ^ y);
+            return dataOfString.Aggregate((current, next) => current + "," + next)
+                                    .ToString();
         }
-  
+ 
         // ========== Developer Solutions ================
-
-
-
+         
     }
 }
